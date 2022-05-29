@@ -2,9 +2,10 @@ import React, { useEffect, useRef, useState } from "react";
 import { Button } from "@chakra-ui/react";
 const StopWatch = () => {
   // const [timerid,setTimerId]=useState(null);
-  const timerid = useRef(null); //{current:null}
+  const timerid = useRef(); //{current:null}
   const [watch, setWatch] = useState(0);
-  const start = () => {
+   const start = () => {
+     console.log(timerid.current);
     if (!timerid.current) {
       let id = setInterval(() => {
         setWatch((prev) => prev + 1);
@@ -36,6 +37,7 @@ const StopWatch = () => {
           borderColor="blue.500"
           margin='5px'
           onClick={start}
+          ref={timerid}
         >
           Start
         </Button>
